@@ -116,6 +116,7 @@ class Allergy : Intent() {
                 "Yes i have allergy",
                 "Yes",
                 "Ok",
+                "allergies",
                 "I don't have any known allergies"
         )
     }
