@@ -10,20 +10,21 @@ import furhatos.flow.kotlin.state
 import furhatos.nlu.common.PersonName
 import furhatos.app.quiz.PainLevel
 import furhatos.app.quiz.Allergy
-import furhatos.app.quiz.gestures.TripleBlink
 import furhatos.gestures.Gestures
+import furhatos.skills.Skill
+import furhatos.flow.kotlin.*
 
 var userName = ""
 val state1: State = state(parent = Parent) {
     onEntry {
-        print("hello")
-        furhat.gesture(Gestures.Surprise(duration = 2.0))
-        //furhat.gesture(Gestures.Thoughtful(duration = 2.0))
+        println("hello") // Print statement corrected
+
         //furhat.gesture(TripleBlink, priority = 10)
-        //furhat.gesture(Gestures.BigSmile(strength = 1.0, duration = 2.0))
-        delay(1000)
         furhat.ask("Good day, I am Furhat and I am here to assist you today during your time in the emergency room. " +
                 "How are you feeling today?")
+
+
+
     }
 
     onResponse<Decease> {
@@ -33,22 +34,14 @@ val state1: State = state(parent = Parent) {
 
 val state2: State = state(parent = Parent) {
     onEntry {
-        furhat.gesture(Gestures.Nod)
-        delay(1000)
-        furhat.gesture(Gestures.Oh(duration = 2.0))
-        furhat.say("I’m sorry to hear that.")
-        furhat.gesture(Gestures.ExpressSad(duration = 2.0))
-         furhat.say(       " It sounds like you’re having a tough time. " +
+        furhat.say("I’m sorry to hear that. It sounds like you’re having a tough time. " +
                 "The medical team and I are here to help you to the best of our abilities."
         )
-        furhat.gesture(Gestures.Smile)
-        furhat.gesture(Gestures.Smile(duration=200.0, strength = 100.0))
+        furhat.gesture(Gestures.BigSmile(strength = 1.0, duration = 20.0))
         //furhat.gesture(GesturesLib.ExpressThinking(duration = 10.0))
         // do an API call here and wait for the result
         //furhat.stopGestures()
-        furhat.say(" The doctor will be here to see you shortly." )
-        delay(1000)
-        furhat.ask(        "I will be requiring your details. " +
+        furhat.ask(" The doctor will be here to see you shortly." + "I will be requiring your details. " +
                 "Please note that " +
                 "I will maintain the confidentiality and security of your personal information. " +
                 "Could you please give me your name? ")
@@ -65,8 +58,6 @@ val state3: State = state(parent = Parent) {
     onEntry {
         furhat.ask( userName + "“Could you please place your" +
                 " insurance card on the side table to your left for us to collect your information, Harry?”  ")
-        delay(3000)
-        furhat.gesture(Gestures.Nod)
     }
 
     onResponse<Nervous> {
