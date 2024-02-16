@@ -10,6 +10,7 @@ import furhatos.flow.kotlin.state
 import furhatos.nlu.common.PersonName
 import furhatos.app.quiz.PainLevel
 import furhatos.app.quiz.Allergy
+import furhatos.app.quiz.gestures.TripleBlink
 import furhatos.gestures.Gestures
 import furhatos.skills.Skill
 import furhatos.flow.kotlin.*
@@ -19,7 +20,7 @@ val state1: State = state(parent = Parent) {
     onEntry {
         println("hello") // Print statement corrected
 
-        //furhat.gesture(TripleBlink, priority = 10)
+        furhat.gesture(TripleBlink, priority = 10)
         furhat.ask("Good day, I am Furhat and I am here to assist you today during your time in the emergency room. " +
                 "How are you feeling today?")
 
