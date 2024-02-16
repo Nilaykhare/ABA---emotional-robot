@@ -11,13 +11,20 @@ import furhatos.nlu.common.PersonName
 import furhatos.app.quiz.PainLevel
 import furhatos.app.quiz.Allergy
 import furhatos.gestures.Gestures
+import furhatos.skills.Skill
+import furhatos.flow.kotlin.*
 
 var userName = ""
 val state1: State = state(parent = Parent) {
     onEntry {
-        print("hello")
+        println("hello") // Print statement corrected
+
+        //furhat.gesture(TripleBlink, priority = 10)
         furhat.ask("Good day, I am Furhat and I am here to assist you today during your time in the emergency room. " +
                 "How are you feeling today?")
+
+
+
     }
 
     onResponse<Decease> {
@@ -30,8 +37,7 @@ val state2: State = state(parent = Parent) {
         furhat.say("I’m sorry to hear that. It sounds like you’re having a tough time. " +
                 "The medical team and I are here to help you to the best of our abilities."
         )
-        furhat.gesture(Gestures.Smile)
-        furhat.gesture(Gestures.Smile(duration=200.0, strength = 100.0))
+        furhat.gesture(Gestures.BigSmile(strength = 1.0, duration = 20.0))
         //furhat.gesture(GesturesLib.ExpressThinking(duration = 10.0))
         // do an API call here and wait for the result
         //furhat.stopGestures()
