@@ -65,7 +65,17 @@ class AnswerOption : EnumEntity {
     }
 
 }
-
+class Insurance : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+                "I have placed it",
+                "placed",
+                "have",
+                "Yes",
+                "Done"
+        )
+    }
+}
 class Nervous : Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
