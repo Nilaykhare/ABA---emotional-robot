@@ -37,19 +37,23 @@ val state1: State = state(parent = Parent) {
 val state2: State = state(parent = Parent) {
     onEntry {
         //furhat.gesture(Gestures.Nod)
-        delay(1000)
+
         furhat.gesture(Gestures.Oh(duration = 2.0))
+        delay(1000)
         furhat.say("I’m sorry to hear that.")
-        furhat.gesture(Gestures.ExpressSad(duration = 2.0))
+        furhat.gesture(Gestures.ExpressSad(duration = 4.0))
          furhat.say(       " It sounds like you’re having a tough time. " +
                 "The medical team and I are here to help you to the best of our abilities."
         )
-        furhat.say(" The doctor will be here to see you shortly." )
+        furhat.say(" The doctor will be here to see you shortly.")
+        delay(500)
+        furhat.say(" So Don't worry" )
+        //delay(1000)
+        furhat.gesture(Gestures.BigSmile(strength = 0.5, duration = 2.0))
         delay(1000)
-        furhat.gesture(Gestures.BigSmile(strength = 1.0, duration = 20.0))
         //furhat.gesture(GesturesLib.ExpressThinking(duration = 10.0))
         // do an API call here and wait for the result
-        //furhat.stopGestures()
+        furhat.stopGestures()
         furhat.ask(        "I will be requiring your details. " +
                 "Please note that " +
                 "I will maintain the confidentiality and security of your personal information. " +
@@ -78,8 +82,8 @@ val state3: State = state(parent = Parent) {
 val state3b: State = state(parent = Parent) {
     onEntry {
         furhat.say( "Thank you, Harry")
-        delay(1000)
-        furhat.gesture(Gestures.Nod)
+        delay(500)
+        furhat.gesture(Gestures.Nod(strength = 0.5))
         furhat.ask ("Your insurance details have been processed." )
     }
 
@@ -91,12 +95,12 @@ val state3b: State = state(parent = Parent) {
 val state4: State = state(parent = Parent) {
     onEntry {
         furhat.say("It’s completely normal to feel anxious in situations like these, Harry. ")
-        furhat.gesture(Gestures.Smile(strength = 1.0, duration = 2.0))
+        furhat.gesture(Gestures.BigSmile(strength = 0.5, duration = 2.0))
         delay(1000)
         furhat.stopGestures(true)
         furhat.say(  "Remember, you’re in good hands and the doctors and nurses will do everything " +
                 "they can to help you feel better. We will also contact your loved ones. " )
-        furhat.gesture(Gestures.Smile(strength = 1.0, duration = 2.0))
+        furhat.gesture(Gestures.BigSmile(strength = 0.5, duration = 2.0))
         delay(1000)
         //furhat.stopGestures()
         furhat.ask("Could you please give us a name and phone number of your emergency contact?")
@@ -123,8 +127,10 @@ val state5: State = state(parent = Parent){
 val state6: State = state(parent = Parent){
     onEntry {
         furhat.gesture(Gestures.Oh(duration = 2.0))
+        delay(1000)
         furhat.gesture(Gestures.ExpressSad(duration = 2.0))
         delay(500)
+        furhat.stopGestures(true)
         furhat.say("Got it, Harry. Thank you for letting me know. " )
         furhat.ask("And just to make sure we've got everything covered," +
                 " could you tell me if you have any allergies or medical conditions " +
@@ -133,12 +139,13 @@ val state6: State = state(parent = Parent){
 
     onResponse<Allergy> {
         furhat.say("Thank you for confirming, Harry. " )
-        furhat.gesture(Gestures.Smile(strength = 1.0, duration = 2.0))
+        furhat.gesture(Gestures.BigSmile(strength = 0.5, duration = 2.0))
         delay(500)
         furhat.say("The doctor will be with you shortly. " +
                 "Please feel free to ask me for assistance. " +
                 "Wishing you a speedy recovery! Take Care")
-        furhat.gesture(Gestures.BigSmile(strength = 1.0, duration = 2.0))
+        furhat.gesture(Gestures.BigSmile(strength = 0.5, duration = 2.0))
+        delay(2000)
         furhat.gesture(Gestures.CloseEyes(strength = 1.0,duration=5.0))
     }
 }
