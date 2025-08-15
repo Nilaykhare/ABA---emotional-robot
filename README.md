@@ -43,7 +43,7 @@ This project explores the use of social robots, specifically Furhat, in emergenc
 - **Age Range:** 21–32  
 - **Data Collected:** Responses to trust, acceptance, and interaction-related questionnaires
 
-- ## Statistical Methods
+## Statistical Methods
 - Descriptive Statistics (Mean, Median, Mode, Min, Max)  
 - Correlation Analysis  
 - Regression Analysis  
